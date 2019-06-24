@@ -5,45 +5,45 @@ import DLibX.DConsole;
 public class Collisions {
 
 	DConsole dc;
-	int points = 0; // points int
 
-	private Block block;
-	private Ball ball;
-	
-	public boolean sameRightX;
-	public boolean sameRightY;
-	public boolean sameLeftX;
-	public boolean sameLeftY;
-	public boolean collided;
+	private Block block; // access the Block class, name it block
+	private Ball ball; // "" ball class -- "ball"
 
 	public Collisions(Block block, Ball ball) {
-	    this.block = block;
-	    this.ball = ball; 
+		this.block = block;
+		this.ball = ball;
 	}
-	 
 
-	public void onCollide() {
-		if(ball.locX == block.leftX) {
-			sameLeftX = true;
+	public void onCollide() { // do what when the ball collides
+		boolean rightHit = false;
+		boolean leftHit = false;
+		boolean topHit = false;
+		boolean bottomHit = false;
+
+		if (ball.getLocX() <= block.leftX + 30
+				&& (ball.getLocY() >= block.leftY && ball.getLocY() <= block.leftY + 60)) {  // 
+			ball.velX *= -1;
+			ball.velY *= -1;
 		}
-		if(ball.locY == block.leftY) {
-			sameLeftY = true;
+
+		if (ball.getLocX() + 30 >= block.rightX  && (ball.getLocY() >= block.rightY && ball.getLocY() <= block.rightY + 60)) { 																																																			// paddle...
+			ball.velX *= -1;
+			ball.velY *= -1;
 		}
-		if(ball.locX == block.rightX) {
-			sameRightX = true;
+		if (leftHit == true) { // when the ball hits the left paddle
+			ball.velX *= -1; // reverse direction x
+			ball.velY *= -1; // "" y
 		}
-		if(ball.locY == block.rightY) {
-			sameRightY = true;
+		if (rightHit == true) { // when it hits the right
+			ball.velX *= -1; // "" 
+			ball.velY *= -1; // ""
 		}
-		if(sameLeftX = true) {
-			ball.locX++;
+		if (ball.getLocY() <= 0) { // when it hits the top
+			topHit = true;
 		}
-		if(sameRightX = true) {
-			ball.locX--;
+		if (ball.getLocY() >= 564) { // when it hits the bottom
+			bottomHit = true;
 		}
 	}
-	
-	
-	
 
 }

@@ -4,9 +4,9 @@ import DLibX.DConsole;
 import java.awt.Color;
 
 public class Block {
-
-	private Color col; // imports the Color class privately.
+	
 	private DConsole d; // imports the DConsole class privately.
+	private Color col; // imports the Color class privately.
 	int leftX; // create an int called blockX.
 	int leftY; // create an int called blockY.
 	int rightX;
@@ -21,30 +21,30 @@ public class Block {
 		this.d = d; // What console are we using?
 	}
 
-	public void moveLeft() {
-		if (d.isKeyPressed('w')) {
-			if (leftY == 0) {
+	public void moveLeft() { // a method that controls the left paddle
+		if (d.isKeyPressed('w')) { // if we press the w key what does it do
+			if (leftY == 0) { // if you press the w key but it's at the top, move it down.
 					leftY++;
 			}
-				leftY--;	
+				leftY--;	// move it "up"
 		}
-		if (d.isKeyPressed('s')) {
-			if (leftY == 534) {
-					leftY--;
+		if (d.isKeyPressed('s')) { // when you press the s key do what
+			if (leftY == 534) { // if you press the s key and it's at the bottom do what
+					leftY--; // moves it "up"
 			}
-				leftY++;
-		}
+				leftY++; // moves it "down"
+		} // bracket
 
 	}
 
-	public void moveRight() {
-		if (d.isKeyPressed('[')) {
+	public void moveRight() { // controls the right paddle
+		if (d.isKeyPressed('[')) { // [ is the key that moves it up
 			if (rightY == 0) {
-				rightY++;
+				rightY++; 
 			}
 				rightY--;		
 		}
-		if (d.isKeyPressed('\'')) {
+		if (d.isKeyPressed('\'')) { // makes ' as the key to move it down
 			if (rightY == 534) {
 				rightY--;
 			}
@@ -54,13 +54,13 @@ public class Block {
 	}
 
 
-	public void drawLeft() { 
-		this.d.setPaint(Color.CYAN);
+	public void drawLeft() {  // draws the left paddle
+		this.d.setPaint(Color.YELLOW); // what colour is the paddle
 		this.d.fillRect(this.leftX, this.leftY, 30, 60);
 	}
 
-	public void drawRight() {
-		this.d.setPaint(Color.GREEN);
+	public void drawRight() { // draws the right paddle
+		this.d.setPaint(Color.YELLOW); // what colour is the paddle
 		this.d.fillRect(this.rightX, this.rightY, 30, 60);
 	}
 
